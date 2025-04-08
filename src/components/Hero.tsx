@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { handleSmoothScroll } from '../utils/general_scroll';
 
 export function Hero() {
   const { t } = useLanguage();
@@ -129,12 +130,14 @@ export function Hero() {
           >
             <a
               href="#contact"
+              onClick={handleSmoothScroll}
               className="group relative px-8 py-3 bg-primary hover:bg-primary-dark rounded-full font-medium transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/20"
             >
               {t('hero.cta')}
               <div className="absolute inset-0 rounded-full bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </a>
             <a
+              onClick={handleSmoothScroll}
               href="#projects"
               className="group px-8 py-3 border border-primary/20 hover:border-primary rounded-full font-medium transition-all duration-300 transform hover:translate-y-[-2px]"
             >

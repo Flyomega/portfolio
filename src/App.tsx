@@ -7,10 +7,21 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { NavbarName } from './components/NavbarName';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { initializeSmoothScrolling } from './utils/general_scroll';
+import { useEffect } from 'react';
 
 function MainContent() {
   const { language, toggleLanguage, t } = useLanguage();
   
+  // Initialize smooth scrolling
+  useEffect(() => {
+    // The cleanupFunction needs to be actually called
+    const cleanupFunction = initializeSmoothScrolling();
+    return () => {
+      cleanupFunction();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-white">
       <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-sm border-b border-primary/10">
