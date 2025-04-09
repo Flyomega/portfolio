@@ -4,7 +4,7 @@ export function smoothScrollToElement(elementId: string): void {
     if (!element) return;
     
     // Get element position with offset for navbar
-    const navbarHeight = 80; // Adjust based on your navbar height
+    const navbarHeight = 60; // Adjust based on your navbar height
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
     
     // Using native browser scrollTo with smooth behavior
