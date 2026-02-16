@@ -7,6 +7,20 @@ import { useLanguage } from '../context/LanguageContext';
 import { projects, Project } from '../data/projects';
 import { SectionTitle } from './SectionTitle';
 
+// Helper function to get status color
+const getStatusColor = (status: Project['status']) => {
+  switch (status) {
+    case 'finished':
+      return 'bg-green-500/20 text-green-400 border-green-500/30';
+    case 'in-progress':
+      return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+    case 'not held':
+      return 'bg-red-500/20 text-red-400 border-red-500/30';
+    default:
+      return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+  }
+};
+
 export function Projects() {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -62,7 +76,12 @@ export function Projects() {
                     )}
                   </div>
                 )}
-                <h3 className="text-xl font-semibold mb-3">{project.name}</h3>
+                <div className="flex items-center gap-3 mb-3">
+                  <h3 className="text-xl font-semibold">{project.name}</h3>
+                  <span className={`text-xs px-2 py-1 rounded-full border ${getStatusColor(project.status)}`}>
+                    {t(`projects.status.${project.status}`)}
+                  </span>
+                </div>
                 <p className="text-gray-400 mb-4 h-20">
                   {language === 'en' ? project.description.en : project.description.fr}
                 </p>
