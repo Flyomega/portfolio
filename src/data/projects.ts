@@ -1,3 +1,7 @@
+import screenMainMenu from './images/screen_main_menu.png';
+import logoFinal from './images/LOGOFINAL.jpg';
+import beforeLogo from './images/Before_logo.png';
+
 export interface Project {
   id: string;
   name: string;
@@ -22,7 +26,7 @@ export const projects: Project[] = [
       fr: "Un jeu vous permettant de découvrir l'anatomie humaine en vous amusant !"
     },
     github: "https://github.com/flyomega/Skeleton_game",
-    image: "src/data/images/screen_main_menu.png",
+    image: screenMainMenu,
     technologies: ["Next.js", "JavaScript", "CSS", "Three.js"],
     demo: "https://skeleton-game.vercel.app",
     featured: true,
@@ -36,7 +40,7 @@ export const projects: Project[] = [
       fr: "Un site web répertoriant des revues philosophiques étudiantes."
     },
     github: "https://github.com/flyomega/Les_cahiers_etudiants",
-    image: "src/data/images/LOGOFINAL.jpg",
+    image: logoFinal,
     technologies: ["Next.js", "JavaScript", "CSS", "React", "PostgreSQL", "Tailwind", "Docker"],
     demo: "https://github.com/flyomega/Les_cahiers_etudiants",
     featured: true,
@@ -50,7 +54,7 @@ export const projects: Project[] = [
       fr: "Une application mobile qui vous permet de vous connecter et d'interagir avec vos amis pendant vos sorties."
     },
     github: "https://gitlab.com/before_team",
-    image: "src/data/images/Before_logo.png",
+    image: beforeLogo,
     technologies: ["React Native", "JavaScript", "Tailwind", "NestJS", "PostgreSQL", "Docker", "Prisma"],
     demo: "https://gitlab.com/before_team",
     featured: true,
