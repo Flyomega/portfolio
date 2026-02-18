@@ -65,9 +65,14 @@ export function Contact() {
   // Handle form submission
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted, current formData:', formData);
     
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      console.log('Form validation failed');
+      return;
+    }
     
+    console.log('Form validation passed');
     setFormStatus('loading');
     
     // EmailJS configuration with added private key for security
@@ -75,21 +80,26 @@ export function Contact() {
     const templateId = import.meta.env.VITE_CONTACT_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_CONTACT_PUBLIC_KEY;
     
+    console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? '***' : 'NOT SET' });
+    
     // Create template parameters - make sure these match your EmailJS template variables
     const templateParams = {
       from_name: formData.name,
-      email: formData.email,
+      user_email: formData.email,
       message: formData.message,
-      reply_to: formData.email,
+      to_name: 'Adrien',
     };
+    console.log('Sending email with params:', templateParams);
     
     try {
-      await emailjs.send(
+      console.log('Calling emailjs.send...');
+      const response = await emailjs.send(
         serviceId, 
         templateId, 
         templateParams,
         publicKey
       );
+      console.log('Email sent successfully:', response);
       
       setFormStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -100,6 +110,7 @@ export function Contact() {
       }, 5000);
     } catch (error) {
       console.error('Error sending email:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
       setFormStatus('error');
       
       // Reset error status after 5 seconds
