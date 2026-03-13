@@ -62,7 +62,7 @@ export function NavbarName() {
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
       variants={sentenceVariants}
-      className="text-primary font-bold text-lg md:text-xl flex justify-center mx-auto absolute left-1/2 transform -translate-x-1/2"
+      className="hidden md:flex text-primary font-bold text-lg md:text-xl justify-center mx-auto absolute left-1/2 transform -translate-x-1/2"
     >
       {displayName.split("").map((char, index) => (
         <motion.span
