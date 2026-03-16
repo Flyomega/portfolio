@@ -35,6 +35,9 @@ const translations = {
     'projects.status.finished': 'Finished',
     'projects.status.in-progress': 'In Progress',
     'projects.status.not held': 'Not Held',
+    'curriculum.title': 'My Resume',
+    'curriculum.expand': 'Click to expand',
+    'curriculum.download': 'Download PDF',
   },
   fr: {
     'hero.greeting': "Bonjour, je suis",
@@ -62,6 +65,9 @@ const translations = {
     'projects.status.finished': 'Terminé',
     'projects.status.in-progress': 'En cours',
     'projects.status.not held': 'Non tenu',
+    'curriculum.title': 'Mon CV',
+    'curriculum.expand': 'Cliquer pour agrandir',
+    'curriculum.download': 'Télécharger le PDF',
   }
 };
 

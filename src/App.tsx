@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
+import { Curriculum } from './components/curriculum';
 import { NavbarName } from './components/NavbarName';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { initializeSmoothScrolling } from './utils/general_scroll';
@@ -64,6 +65,7 @@ function MainContent() {
         <Hero />
         <About />
         <Projects />
+        <Curriculum />
         <Contact />
       </main>
 
