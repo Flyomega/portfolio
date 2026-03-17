@@ -5,6 +5,19 @@ import { X, Download, ZoomIn } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SectionTitle } from './SectionTitle';
 
+async function downloadPdf() {
+  const res = await fetch('/curriculum.pdf');
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'curriculum.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 export function Curriculum() {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
@@ -80,11 +93,8 @@ export function Curriculum() {
           </motion.div>
 
           {/* Download button */}
-          <motion.a
-            href="/curriculum.pdf"
-            download
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={downloadPdf}
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -93,7 +103,7 @@ export function Curriculum() {
           >
             <Download size={15} />
             {t('curriculum.download')}
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
 
@@ -128,17 +138,14 @@ export function Curriculum() {
                   <span className="text-white font-semibold">{t('curriculum.title')}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <motion.a
-                    href="/curriculum.pdf"
-                    download
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <motion.button
+                    onClick={downloadPdf}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-1.5 text-primary hover:text-white transition-colors text-sm font-medium"
                   >
                     <Download size={15} />
                     {t('curriculum.download')}
-                  </motion.a>
+                  </motion.button>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="text-white/50 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/5"
