@@ -83,6 +83,8 @@ export function Curriculum() {
           <motion.a
             href="/curriculum.pdf"
             download
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -129,6 +131,8 @@ export function Curriculum() {
                   <motion.a
                     href="/curriculum.pdf"
                     download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-1.5 text-primary hover:text-white transition-colors text-sm font-medium"
                   >
